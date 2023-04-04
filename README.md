@@ -1,2 +1,1 @@
-"# VaRCalculations" 
-"# VarCalculations" 
+This code contains the methods for calculating VaR for a single trade and a portfolio. In each method only the confidance value is configurable and all the rest of the inputs are inputed into the methods. This also contain jUnit testing.
