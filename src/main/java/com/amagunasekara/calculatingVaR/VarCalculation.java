@@ -8,10 +8,8 @@ public class VarCalculation {
 	public double calcVaRForOneTrade(double confidanceLevel) {
 		double[] historicalData = { -6.03, -3.05, 3.02, -1.02, -5.05, 5.20, 1.5, 0.0, 2.05, 4.52, -7.43, -4.36, -2.91,
 				6.85, 7.28, 8.69, -8.24, 9.25, -9.26, 10.25 };
-		Arrays.sort(historicalData);
-		int numberOfDays = historicalData.length;
-		double vaRPercentile = percentileVaR(numberOfDays, confidanceLevel);
-		return historicalData[(int) vaRPercentile];
+		double result = calcVaR(confidanceLevel, historicalData);
+		return result;
 
 	}
 
@@ -37,18 +35,18 @@ public class VarCalculation {
 			portfolioReturn[i] = (historicalData1[i] * weight1) + (historicalData2[i] * weight2)
 					+ (historicalData3[i] * weight3 + (historicalData4[i] * weight4));
 		}
-		Arrays.sort(portfolioReturn);
-		int numberOfDays = portfolioReturn.length;
 
-		// calculating the VaR percentile
-		double vaRPercentile = percentileVaR(numberOfDays, confidanceLevel);
+		double result = calcVaR(confidanceLevel, portfolioReturn);
 
-		return portfolioReturn[(int) vaRPercentile];
+		return result;
 
 	}
 
-	public double percentileVaR(int numberOfDays, double confidanceLevel) {
-		return (1 - (confidanceLevel / 100)) * numberOfDays;
+	public double calcVaR(double confidanceLevel, double[] data) {
+		int numberOfDays = data.length;
+		Arrays.sort(data);
+		double vaRPercentile = (1 - (confidanceLevel / 100)) * numberOfDays;
+		return data[(int) vaRPercentile];
 	}
 
 }
