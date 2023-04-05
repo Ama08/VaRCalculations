@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class VarCalculation {
 
 	// VaR for a single trade
-	public static double calcVaRForOneTrade(double confidanceLevel) {
+	public double calcVaRForOneTrade(double confidanceLevel) {
 		double[] historicalData = { -6.03, -3.05, 3.02, -1.02, -5.05, 5.20, 1.5, 0.0, 2.05, 4.52, -7.43, -4.36, -2.91,
 				6.85, 7.28, 8.69, -8.24, 9.25, -9.26, 10.25 };
 		Arrays.sort(historicalData);
@@ -16,7 +16,7 @@ public class VarCalculation {
 	}
 
 	// VaR for a portfolio
-	public static double calcPortfolioVaR(double confidanceLevel) {
+	public double calcPortfolioVaR(double confidanceLevel) {
 		double[] historicalData1 = { -6.03, -3.05, 3.02, -1.02, -5.05, 5.20, 1.5, 0.0, 2.05, 4.52, -7.43, -4.36, -2.91,
 				6.85, 7.28, 8.69, -8.24, 9.25, -9.26, 10.25 };
 		double[] historicalData2 = { -7.03, -4.05, 4.02, -2.02, -6.05, 6.20, 2.5, 0.0, 3.05, 5.52, -8.43, -5.36, -3.91,
@@ -47,7 +47,7 @@ public class VarCalculation {
 
 	}
 
-	public static double percentileVaR(int numberOfDays, double confidanceLevel) {
+	public double percentileVaR(int numberOfDays, double confidanceLevel) {
 		return (1 - (confidanceLevel / 100)) * numberOfDays;
 	}
 
